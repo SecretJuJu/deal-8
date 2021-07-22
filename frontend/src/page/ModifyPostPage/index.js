@@ -36,8 +36,9 @@ export default class CreatePostPage extends AbstractPage {
         </div>  
       </div>
     </header>
-    <div class="img-slide-container "></div>
+    
     <main id="posting-container" class="posting-main">
+      <div class="img-slide-container "></div>
         <span class="split-line"></span>
           <input
               id="title-input"
