@@ -343,21 +343,18 @@ export default class MySQLProductStore extends AbstractProductStore {
           content=?,
           cost=?,
           location=?,
-          thumbnail=?,
           updatedAt=CURRENT_TIME()
         WHERE
           id=?
     `;
-    const { category, title, content, cost, location, thumbnail, id, images } =
-      product;
-    const params = [category, title, content, cost, location, thumbnail, id];
+    const { category, title, content, cost, location, id } = product;
+    const params = [category, title, content, cost, location, id];
     try {
       const result = await mysqlConnection
         .promise()
         .query(updateProductQuery, params);
       const isSuccess = result[0]?.affectedRows === 1;
       if (isSuccess) {
-        await this.createProductImages(id, images);
         return true;
       } else {
         return null;
