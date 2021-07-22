@@ -6,11 +6,11 @@ import { delegate } from "@/helper/eventHelpers";
 import chevronLeftSvg from "@/public/svg/chevron-left.svg";
 import chevronRightSvg from "@/public/svg/chevron-right.svg";
 
-const tag = "[ProductImageListView]";
+import "@/public/css/common/image_slide.css";
 
-export default class ProductImageListView extends View {
+export default class ImageSlideView extends View {
   constructor(
-    element = qs("div.post-main--img-container"),
+    element = qs("div.img-slide-container"),
     template = new Template()
   ) {
     super(element);
@@ -20,6 +20,7 @@ export default class ProductImageListView extends View {
     this.imageLength = 0;
     this.$images;
     this.SLIDETIME = 500;
+    console.log("element created");
   }
 
   bindingEvents() {

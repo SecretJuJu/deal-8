@@ -2,15 +2,14 @@ import AbstractPage from "../AbstractPage";
 
 import chevronLeftSVG from "@/public/svg/chevron-left.svg";
 import checkSVG from "@/public/svg/check.svg";
-import imageSVG from "@/public/svg/image.svg";
 import mapPinSVG from "@/public/svg/map-pin.svg";
 import chevronRightSVG from "@/public/svg/chevron-right.svg";
 
-import ImageUploadView from "./views/ImageUploadView";
 import Controller from "./Controller";
 import Store from "./Store";
 import ModifyPostFormView from "./views/ModifyPostFormView";
 import ModifyPostHeaderView from "./views/ModifyPostHeaderView";
+import ImageSlideView from "@/common/views/ImageSlideView";
 
 import "@/public/css/writePost.css";
 import CategorySelectView from "./views/CategorySelectView";
@@ -37,17 +36,8 @@ export default class CreatePostPage extends AbstractPage {
         </div>  
       </div>
     </header>
+    <div class="img-slide-container "></div>
     <main id="posting-container" class="posting-main">
-        <div id="img-register-container" class="posting-main-img-container">
-            <label for="img-input" class="img-register">
-                <div class="image-icon">${imageSVG}</div>  
-                <p class="img-register--msg">
-                    <span id="image-count">0</span>/ 10
-                </p>
-            </label>
-            <input id="img-input" type="file" multiple/>
-            <div id="img-container" class="img-container"></div>
-        </div>
         <span class="split-line"></span>
           <input
               id="title-input"
@@ -95,7 +85,7 @@ export default class CreatePostPage extends AbstractPage {
     store.productId = this.productId;
     const views = {
       modifyPostHeaderView: new ModifyPostHeaderView(),
-      imageUploadView: new ImageUploadView(),
+      modifyPostImageSlideView: new ImageSlideView(),
       modifyPostFormView: new ModifyPostFormView(),
       categorySelectView: new CategorySelectView(),
     };

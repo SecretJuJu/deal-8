@@ -7,10 +7,10 @@ import "@/public/css/common/drop_down.css";
 import Store from "./Store";
 
 import ProductDetailHeaderView from "./views/ProductDetailHeaderView";
-import ProductImageListView from "./views/ProductImageListView";
 import ProductDetailView from "./views/ProductDetailView";
 import ProductDetailFooterView from "./views/ProductDetailFooterView";
 import ProductDetailModalView from "./views/ProductDetailModalView";
+import ImageSlideView from "@/common/views/ImageSlideView";
 
 export default class ProductDetailPage extends AbstractPage {
   constructor(params) {
@@ -21,7 +21,7 @@ export default class ProductDetailPage extends AbstractPage {
     return /*html*/ `
     <header class="header"></header>
     <main class="post-main">
-      <div class="post-main--img-container">
+      <div class="img-slide-container">
       </div>
       <section id="sale-info">
       </section>
@@ -48,7 +48,7 @@ export default class ProductDetailPage extends AbstractPage {
     const store = new Store({ productId: this.params.productId });
     const views = {
       productDetailHeaderView: new ProductDetailHeaderView(),
-      productImageListView: new ProductImageListView(),
+      productImageListView: new ImageSlideView(),
       productDetailView: new ProductDetailView(),
       productDetailFooterView: new ProductDetailFooterView(),
       productDetailModalView: new ProductDetailModalView(),

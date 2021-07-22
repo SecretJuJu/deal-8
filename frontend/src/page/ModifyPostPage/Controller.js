@@ -16,7 +16,7 @@ export default class Controller {
   constructor(
     store,
     {
-      imageUploadView,
+      modifyPostImageSlideView,
       modifyPostFormView,
       modifyPostHeaderView,
       categorySelectView,
@@ -26,7 +26,7 @@ export default class Controller {
     this.productId = store.productId;
     this.modifyPostHeaderView = modifyPostHeaderView;
     this.modifyPostFormView = modifyPostFormView;
-    this.imageUploadView = imageUploadView;
+    this.modifyPostImageSlideView = modifyPostImageSlideView;
     this.categorySelectView = categorySelectView;
 
     this.isShowCategorySelectView = false;
@@ -114,18 +114,6 @@ export default class Controller {
       this.store.content = content;
     });
 
-    this.imageUploadView.on("@image-upload", (e) => {
-      this.uploadImagesFromFileSystem(e.detail.value);
-    });
-
-    this.imageUploadView.on("@image-delete", (e) => {
-      const fileKey = Number(e.detail.value);
-      this.store.images = [...this.store.images].filter(
-        (_, idx) => idx !== fileKey
-      );
-      this.render();
-    });
-
     this.modifyPostHeaderView.on("@modify-post", (e) => this.modifyPost());
 
     this.modifyPostHeaderView.on("@go-to-back", () => {
@@ -198,7 +186,7 @@ export default class Controller {
       this.modifyPostHeaderView.hide();
     } else {
       this.categorySelectView.hide();
-      this.imageUploadView.show(images);
+      this.modifyPostImageSlideView.show(images);
       this.modifyPostFormView.show(
         {
           title,
